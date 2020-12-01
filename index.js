@@ -1,7 +1,7 @@
 const { executionAsyncResource } = require('async_hooks');
 const Discord = require('discord.js');
 const { measureMemory } = require('vm');
-const ytdl = require('ytdl-core@latest');
+const ytdl = require('ytdl-core');
 
 const { YTSearcher } = require('ytsearcher');
 
