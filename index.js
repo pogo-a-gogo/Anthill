@@ -53,6 +53,9 @@ client.on("message", async(message) => {
         case 'queue':
             Queue(serverQueue);
             break;
+        case 'np':
+            Np(serverQueue);
+            break;    
         }
 
     async function execute(message, serverQueue){
@@ -242,6 +245,20 @@ client.on("message", async(message) => {
 
         message.channel.send('```' + qMsg + 'Requested by: ' + message.author.username + '```');
     }
+    function Np(serverQueue){
+        if(!serverQueue)
+            return Message.channel.send("There is nothing currently playing!");
+        if(message.member.voice.channel != message.guild.me.voice.channel)
+            return message.channel.send("You are not in the voice channel!")
+
+        let nowPlaying = serverQueue.songs[0];
+        let qMsg =  `Now playing: ${nowPlaying.title}\n`
+
+        for(var i = 1; i < serverQueue.songs.length; i++)
+
+        message.channel.send('Requested by: ' + message.author.username);
+    
+    }    
 })
 
 client.login(process.env.token)
