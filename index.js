@@ -258,8 +258,7 @@ client.on("message", async(message) => {
             .setColor("BLUE")
             .setDescription(qMsg)
             message.channel.send(msg)
-
-        message.channel.send('Requested by: ' + message.author.username);
+            message.channel.send('Requested by: ' + message.author.username);
     
     }    
 })
