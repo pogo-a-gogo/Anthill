@@ -252,7 +252,7 @@ client.on("message", async(message) => {
             return message.channel.send("You are not in the voice channel!")
 
         let nowPlaying = serverQueue.songs[0];
-        let qMsg =  `Now playing: ${nowPlaying.title}`
+        let qMsg =  `Now playing: ${nowPlaying.title.length}`
 
         let msg = new Discord.MessageEmbed()
             .setColor("BLUE")
