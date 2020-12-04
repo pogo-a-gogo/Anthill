@@ -259,8 +259,9 @@ client.on("message", async(message) => {
         let msg = new Discord.MessageEmbed()
             .setColor("BLUE")
             .setDescription(qMsg)
-            message.channel.send(msg)
-            message.channel.send('Requested by: ' + message.author.username);
+            .addField("Requested by:", `${message.author.username}`, true )
+            message.channel.send(msg);
+            //message.channel.send('Requested by: ' + message.author.username);
     
     }    
 })
