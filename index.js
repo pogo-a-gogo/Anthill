@@ -71,7 +71,8 @@ client.on("message", async(message) => {
 
             let song = {
                 title: songInfo.videoDetails.title,
-                url: songInfo.videoDetails.video_url
+                url: songInfo.videoDetails.video_url,
+                tlength: songInfo.videoDetails.lengthSeconds
             };
 
             if(!serverQueue){
@@ -252,12 +253,13 @@ client.on("message", async(message) => {
             return message.channel.send("You are not in the voice channel!")
 
         let nowPlaying = serverQueue.songs[0];
-        let qMsg =  `Now playing: ${nowPlaying.title}`
+        let sng;
+        let qMsg =  `Now playing: ${nowPlaying.title} ${parseInt(nowPlaying.tlength / 60)}:${nowPlaying.tlength - 60 * parseInt(nowPlaying.tlength / 60)}\n--------------------------\n`
 
         let msg = new Discord.MessageEmbed()
             .setColor("BLUE")
             .setDescription(qMsg)
-            //message.channel.send(msg)
+            message.channel.send(msg)
             message.channel.send('Requested by: ' + message.author.username);
     
     }    
