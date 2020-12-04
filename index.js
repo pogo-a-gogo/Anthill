@@ -238,10 +238,12 @@ client.on("message", async(message) => {
             return message.channel.send("You are not in the voice channel!")
 
         let nowPlaying = serverQueue.songs[0];
-        let qMsg =  `Now playing: ${nowPlaying.title}\n--------------------------\n`
+        let sng;
+        let qMsg =  `Now playing: ${nowPlaying.title} ${parseInt(nowPlaying.tlength / 60)}:${nowPlaying.tlength - 60 * parseInt(nowPlaying.tlength / 60)}\n--------------------------\n`
 
         for(var i = 1; i < serverQueue.songs.length; i++){
-            qMsg += `${i}. ${serverQueue.songs[i].title}\n`
+            sng = serverQueue.songs[i];
+            qMsg += `${i}. ${sng.title} ${parseInt(sng.tlength / 60)}:${sng.tlength - 60 * parseInt(sng.tlength / 60)}\n`
         }
 
         message.channel.send('```' + qMsg + 'Requested by: ' + message.author.username + '```');
@@ -259,7 +261,7 @@ client.on("message", async(message) => {
         let msg = new Discord.MessageEmbed()
             .setColor("BLUE")
             .setDescription(qMsg)
-            .addField("Requested by:", `${message.author.username}`, true )
+            .addField("Requested by:", `${message.author.username}`)
             message.channel.send(msg);
             //message.channel.send('Requested by: ' + message.author.username);
     
